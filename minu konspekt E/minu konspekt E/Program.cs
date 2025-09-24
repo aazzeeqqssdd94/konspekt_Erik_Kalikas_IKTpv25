@@ -1,4 +1,7 @@
-﻿namespace minu_konspekt_E
+﻿using System.ComponentModel.Design;
+using System.Runtime.CompilerServices;
+
+namespace minu_konspekt_E
 {
     internal class Program
     {
@@ -88,10 +91,42 @@
 
             if (password == "simsalabim")
             {
-                Console.WriteLine("parool on õige, aarete laegas avaneb""
+                Console.WriteLine("parool on õige, aarete laegas avaneb");
             }
-        }
-    }
-}
-        
-        
+            else if (password == "saatan" || password == "1234")
+            {
+                Console.WriteLine("parool on sobimatu, palun mingi muu");
+            }
+            else
+            {
+                Console.WriteLine("parool on vale, proovi uuesti");
+            }
+
+            //5 värvituvastus
+            Console.WriteLine("milline värv sulle kõige rohkem meeldib?:");
+            string favoritecour = Console.ReadLine();
+            if (favoritecour == "punane")
+            {
+                Console.BackgroundColor = ConsoleColor.Red;
+            }
+            if (favoritecour =="orange")
+            {
+                Console.WriteLine("kahjuks organzi ei ole");
+            }
+            if(favoritecour =="kollane")
+            {
+                Console.BackgroundColor= ConsoleColor.Yellow;
+            }
+            if (favoritecour =="rohaline")
+            {
+                Console.BackgroundColor= ConsoleColor.Green;
+            }
+            else
+            {
+                Console.WriteLine("värvi ei tunne");
+            }
+            Console.WriteLine("värv muudetud!");
+
+
+
+
