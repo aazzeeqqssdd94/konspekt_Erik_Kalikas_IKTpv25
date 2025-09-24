@@ -82,8 +82,14 @@
 
 
 
+            //4 parool, if ja string andmetüüp
+            Console.WriteLine("programmi edasiseks tööks sisesta palin parool:");
+            string password = Console.ReadLine();
 
-
+            if (password == "simsalabim")
+            {
+                Console.WriteLine("parool on õige, aarete laegas avaneb""
+            }
         }
     }
 }
