@@ -321,11 +321,34 @@ namespace minu_konspekt_E
             //kasutame moodulist "Console" punkti abil funktsioono "WriteLine" et kuvada kasutajale
             //tehte tulemus. Selle jaoks on WriteLine funktsioonis parameetrina pandud muutuja
             //"tulemus" ilma tekstiks teisendamata. Lause lõppeb lauselõpumärgiga ";".
-            
+
+            Console.WriteLine("sisesta");
+            double ostusumma = double.Parse(Console.ReadLine());
+            if (ostusumma > 100)
+            {
+                Console.WriteLine("saada 20% allandlust!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+            }
+            else if (ostusumma < 101 && ostusumma > 50)
+            {
+                Console.WriteLine("saad 10% allahindust. c: yay");
+            }
+            else if (ostusumma < 51 && ostusumma > 20)
+            {
+                Console.WriteLine("5% allahindlust.");
+            }
+            else if  (ostusumma <21 && ostusumma > 0)
+            {
+                Console.WriteLine("allahindlust ei saa");
+            }
+            else
+            {
+                Console.WriteLine("sisestatud on vigane arv");
+            }
+
             /* tingimuslause osad */
-            if (true) {} //kaitstud sõna "if" kutsub esile tingimuslause, mille tingimus on sulgude vahel, ning millele järgneb
-                         //koodiplokk tingimuse täitumisel teostatav koodiga
-            else IGrouping (true) { } // laitstud sõnad "if" (else if) kutsuvad esile sekundaarse tingimuslause, mille tingimus
+            if (true) { } //kaitstud sõna "if" kutsub esile tingimuslause, mille tingimus on sulgude vahel, ning millele järgneb
+                          //koodiplokk tingimuse täitumisel teostatav koodiga
+            else if (true) { } // laitstud sõnad "if" (else if) kutsuvad esile sekundaarse tingimuslause, mille tingimus
                           //on samamoodi sulgude vahel, ning millele pepab eelnema alat kas "if" või teine "else if". tingimuse täitumisel
                           //ja eelneva tingimuse mittetäitumisel, teostatakse koodiploki sees olev kood.
             else {}       //kaitsud sõna "else" kutsub esile järeltingimuse, mille peab eelnema kas "if" võ "else if", ning mille koodiploki sisu
