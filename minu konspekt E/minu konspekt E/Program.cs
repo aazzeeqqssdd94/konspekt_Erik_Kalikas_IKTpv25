@@ -321,6 +321,56 @@ namespace minu_konspekt_E
             //kasutame moodulist "Console" punkti abil funktsioono "WriteLine" et kuvada kasutajale
             //tehte tulemus. Selle jaoks on WriteLine funktsioonis parameetrina pandud muutuja
             //"tulemus" ilma tekstiks teisendamata. Lause lõppeb lauselõpumärgiga ";".
+            
+            /* tingimuslause osad */
+            if (true) {} //kaitstud sõna "if" kutsub esile tingimuslause, mille tingimus on sulgude vahel, ning millele järgneb
+                         //koodiplokk tingimuse täitumisel teostatav koodiga
+            else IGrouping (true) { } // laitstud sõnad "if" (else if) kutsuvad esile sekundaarse tingimuslause, mille tingimus
+                          //on samamoodi sulgude vahel, ning millele pepab eelnema alat kas "if" või teine "else if". tingimuse täitumisel
+                          //ja eelneva tingimuse mittetäitumisel, teostatakse koodiploki sees olev kood.
+            else {}       //kaitsud sõna "else" kutsub esile järeltingimuse, mille peab eelnema kas "if" võ "else if", ning mille koodiploki sisu
+                          //täidetakse kõikide teiste "if" ja "else if" tingimuste läbikukkumisel.
+
+            /* loogilised tehted */
+
+            // && -> "and" loogiline tehe, mida kasutatakse tingimuste kirjeldamisel, ning mis annab positiivse (true= juhul kui
+            //        mõlemal poll "&&" märki olevad tingimused on täidetud. kui üks neiste ei ole, siis annab negatiivse (false).
+            // || -> "or"! loogiline tege, mida kasutatakse tingimuste kirjendamisel, ning mis annab positiivse vastuse (true) siis kui
+            //        vähemalt üks tingimus on täidetud. Negatiivne vastus (false) tagastatakse siis, kui kõik tingimuse on täitmata.
+            //! -> "not" loogiline tehe, mida kasutatakse tingimuse tulemuse inverteerimiseks. Tulemus, mis muidu tagastaks (true),
+            //      hüüumärgi abil tagastab (false), ja vastupidi - tulemus mis muidu tagastaks (false), hüüumärgi abil tagastab (true)
+
+            /* võrdlusoperaatorid */
+
+            // == -> "on võrdne" võrdusmäride ühel pool olev peab vastama täpselt oma olemuselt võrdusmärkide teise pool oleva
+            //        objektiga. ei ole sama nagu üks võrdusmärk omistab, kaks võrdleb.
+            // != "ei ole võrdne". Võrdusmärgi ühel pool olev objekt */EI TOHI* olla samal kujul nagu võrdusmärgi teisel pool oleva
+            //    Ta võib olla üksikõik mis mul kujul, aga mitte võrreldava objektiga samal kujul. võrdlusoperaator on kombinatsioon
+            //    "on võrdne operaatorist, ja loggilisest tehtest "not".
+            // >    -> "on suurem kui". Märgist vasakul pool olev objekt peaks olema suurem, kui paremal pool olev objekt.
+            // <    -> "on väiksem kui". Märgist vasakul pool olev objekt peaks olema väiksem, kui paremal pool olev objekt.
+            // >= -> "suuremvõrdne". märgist vasakul pool olev objekt peaks olema vähemalt võrdne või suurem kui parempoolne objekt.
+            //       võrdlusoperaator on kombinatsioon "on võrdne" ja "on suurem kui" operaatoritest-
+            // <= -> "väiksemvõrdne". Märgist vasakul pool olev objekt peaks olema vähemaöt võrdne või väiksem kui parempoolne objekt.
+            //       võrdlusoperaator on kombinatsioon "on võrdne" ja "on väiksem kui" operaatoritest.
+
+            /* omistusoperaatorid ja kiirthehted */
+
+            int thing = 1;// 0  -> üksik võrdusmärk omistab muutuja sisse väärtuse, mida saab kasutada läbi muutuja nime.
+            thing += 1;   //  += -> võrdusmärki mille ees on pluss automatselt liidab muutujale otsa võrdusmärgi teise pool oleva arvu.
+                          //         asendab tehet "thing = thing + 1". on kombinatsioon matemaatilisest tehtest "+" ja omistamisest "=".
+            thing -= 1;   // -= -> võrdusmärk mille ees on miinus , automatselt lauhtab muutujast maha võrdusmärgi teisel pool oleva arvu.
+                          //        asendab tehet "thing = thing - 1". on kombinatsioon matemaatilisest tehtest "-" ja omistamisest "="
+            thing *= 2;   // *= -> võrdusmärk mille ees on korrutusmärk "*", automaatselt korrutab muutuja sisu, võrdusmärgi teisel pool
+                          //       oleva arvu kordi. asendab tehett "thing = thing * 2". on kombunatsioon matemaatilisest tehtest "*" ja
+                          //        omistamisest "=".
+            thing /= 2;   // /= ->  võrdusmärk mille ees on jagamismärk "/", automatselt jagab muutuja sise võrd
+
+
+
+
+
+
         }
     }
 }
