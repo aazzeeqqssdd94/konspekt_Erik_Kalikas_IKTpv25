@@ -164,6 +164,35 @@ namespace minu_konspekt_E
             var y = 123;   //ta võib omada endas teisi andmetüüpe
             const int z = 9; // konstat-tüüpi muutujaid ei saa muutu, nende sisu on read-only
 
+            /* Võimalikud komposiitandmetüübid */
+            // 1. massiiv:
+            // [] - > massiiv on komposiitandmetüüp, mille sees saab olla mitmeid samat tüüpi lihtandmeid. Massiivi tähistakse kantsulgudega.
+            //        massiiv saab olla üksikõik millist lihtandmetüüpi massiive.
+            //        massiivi tekitamisel tuleb ära öelda kui suur see massiiv on.
+            //        massiiv ei pea olema koostatud ainult lihtandmetüüpidest,  vaid massiive saab olla ka tehtud teistestkomposiitandmetüüpidest
+            //        Sealhulgas massiiv ise.
+            // Esimene tekstitusviis:
+            int[] arvuMassiiv = new[3]; // andmetüüp int et tegu on täisarvutüüpi andmega ja kantsulud väljendavad et ühitlasi on
+                                        // tegu ka massiiviga. muutuja nimeks in "arvuMassiiv" ja võrdusmärgi abil on omistatud muutujasse
+                                        // uus tühi massiiv kasutades kaitstudes kaitstud sõna "new", millele järgneb selle massiivi andmetüübi ja
+                                        // pikkuse sätestus "int[3]". See tähendab et siin massiivis on 3 elementi, mis on täisarvud.
+            // Teine tekitusviis:
+            int[] arvuThisMany = arvuMassiiv.Lengeth;  // teine massiivi tekstusviis kus järjendi pikkuse sätestamise asemel, pannakse elemedu´id kohe
+                                                       // mitu elementi, adresseeritav massiiv omab, omistatakse ainult järjendi
+                                                       // järjendi sees olevaid elemente.
+                                                       //põhilised matemaatilised tehted
+            int liitmine = 1 + 1; //liitmine, kaks arvu liidetakse kokku
+            int lahutamine = 1 - 1; //lahutamine, kus esimesest arvust lahutatakse maha teine
+            double korrutamine = 1 * 2; //korrutamine, kus teine arv korrutatakse esimese arvu kordi.
+            double jagamine = 1 / 2; //jagamine. esimene arv jagatakse teise arvuga.
+            double astendamine = Math.Pow(2, 2); //astendamine, esimene arv astendatakse teisega
+            double juurimine = Math.Sqrt(2); //ruutjuur, parameetrina juuritav arv
+                                             //muutuja nimed
+            int arv = 0; //sobib
+            string sõne = "abc"; //sobib
+                                 //string string = "abc"; //kaitstud sõna kasutada ei saa
+
+
             //põhilised matemaatilised tehted
             int liimine = 1 + 1; // liitmine, kaks arvu liidetakse kokku
             int lahutamine = 1 - 1; // lahutamine, kus esimisest arvust lahutatakse maha teine
@@ -392,6 +421,18 @@ namespace minu_konspekt_E
 
 
 
+            //3. for
+            int kogus = 6; // muutuja mida kasutab oma töö tegemiseks + teisisõnu, töödeldav materjal
+            for (int k = 0; k < kogus; ++k) // kaitstud sõnaa "for" alustab for-tsüklit, pärast mida on sulud, mille vahel on kõik tsükli
+                                            // töö jaoks vajalik olemas. Esimene parameeter, tekitab tsükli tõõ jaoks kohaliku muutuja
+                                            // "int k = 0;" mida tsükli ENDA töö juhtimiseks. Teine parameete on tingimuslause, mis kontrollib
+                                            // tingimuse täitmist "k < kogus;" ning mille täitumisel tsükli töö jätkub, aga mille
+                                            // mitte-täitumisel tsükkel katkeb. kolmas parameeter on tsükli töö jätkub, aga mille
+                                            // mitte´-täitumisel tsükkel katkeb. kolmas parameeter on tsükli töö jätkub, aga mille
+                                            // mitte-täitumisel tsükel katkeb. kolmas parameeter on tsüklimuutuja ink rementeerimine kiiretehtega
+                                            //"k++". Pare tähele, et iga sulgude vahel oleva osa järel (välja arvatud viimase) on
+                                            // lauselõpumärk. Tsükli tööd kontrolliv tingimuslause koosneb kolmest reast, mitte ühest
+                                            // nagu "while" või "do-while" puhul.
 
 
         }
