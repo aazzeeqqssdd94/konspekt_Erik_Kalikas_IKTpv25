@@ -419,7 +419,25 @@ namespace minu_konspekt_E
             thing /= 2;   // /= ->  võrdusmärk mille ees on jagamismärk "/", automatselt jagab muutuja sise võrd
 
 
+            /* Tsüklid */
+            // 1. do-while
+            int dew = 0;
+            do // "do" on kaitstud sõna, mis alustab do-while tsüklit. Pärst seda on koodiplokk {} ning ütleb et tee seda koodi
+            {
+                dew++;
+            } while (dew != 5); //niikaua kuni while järel olevate sulgude vahel tingimus ei täitu, käivitatakse eelnev kood uuesti.
 
+            // 2. while
+            int i = 1;    //tsüklimuutuja mis aitab järge pidada while tsükli toimimisel
+            while (i < 5) //"while" on kaitstud sõna mis alustab while tsükli varianti, ilma "do"-ta, ning vajab alati välist
+                          //tsüklimuutujat. antud juhul on selleks i. Tsükli tingimus, mis peale "while" sõna on, asub sulgude vahel,
+                          //siin kontrollitaksegi tsükli tööd, läbi kindla tingimuse kasutades tsüklimuutujat.
+                          // antud juhul tsükkel töötab niikaua, kuni i on väiksem kui 5. kui i on sama suur nagu 5, siis tsükkel
+                          //katkeb.
+            {
+                //koodiplokk kus midagi tehakse
+                i++;      //ning seejärel muudetakse tsüklimuutuja "i" olekut. antud juhul liidetakse 1 juurde kiirtehtega "++".
+            }
 
             //3. for
             int kogus = 6; // muutuja mida kasutab oma töö tegemiseks + teisisõnu, töödeldav materjal
