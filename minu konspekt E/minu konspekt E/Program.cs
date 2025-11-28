@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel.Design;
+using System.Net.NetworkInformation;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
+using System.Runtime.Intrinsics.X86;
 
 namespace minu_konspekt_E
 {
@@ -163,6 +165,7 @@ namespace minu_konspekt_E
             var x = "abc"; //var on ebamäärase andmetüübiga kohalik muutuja
             var y = 123;   //ta võib omada endas teisi andmetüüpe
             const int z = 9; // konstat-tüüpi muutujaid ei saa muutu, nende sisu on read-only
+            //void on andmetüüp, mida muutuja tekitamisel kasutada ei saa. kasutatakse ainult meetodite signatuurides väljendamaks et
 
             /* Võimalikud komposiitandmetüübid */
             // 1. massiiv:
@@ -176,11 +179,84 @@ namespace minu_konspekt_E
                                         // tegu ka massiiviga. muutuja nimeks in "arvuMassiiv" ja võrdusmärgi abil on omistatud muutujasse
                                         // uus tühi massiiv kasutades kaitstudes kaitstud sõna "new", millele järgneb selle massiivi andmetüübi ja
                                         // pikkuse sätestus "int[3]". See tähendab et siin massiivis on 3 elementi, mis on täisarvud.
-            // Teine tekitusviis:
+                                        // Teine tekitusviis:
             int[] arvuThisMany = arvuMassiiv.Lengeth;  // teine massiivi tekstusviis kus järjendi pikkuse sätestamise asemel, pannakse elemedu´id kohe
                                                        // mitu elementi, adresseeritav massiiv omab, omistatakse ainult järjendi
                                                        // järjendi sees olevaid elemente.
                                                        //põhilised matemaatilised tehted
+                                                       int liitmine =
+                                                       //
+
+
+            //Matemaatilised tehted moodulist "Math"
+            double astendamine = Math.Pow(2, 2); //astendamine, esimine arv astendatakse teisega
+            double juurimine = Math.Sqrt(2); //ruutujuur, parameetrina juuritav arv
+            double NewD = 4.0000000d;
+            Math.Round(NewD);  //Moodulist "Math" kutsutakse esile punkti abil meetod "Round", sulgude vahel on esimese parameetrina
+                               //ümardatav arv, teise parameetrina komakohtade arv. round ümardab sulgude
+                               //teises parameetris oleva komakohtadeni.Kui komakohti ei ole seatud, ümard
+                               //0-4 ümardatakse allapoole, 5-9 ümardatakse ülespoole.
+                               double newPI = Math.PI; //Moodulist "Math" kutsutakse punkti abil esile kaitsud väärtus, PI
+            // maatilist pi-d ja seda saab kasutada nagu tavaline arv.
+
+            //Castimine, ehk arvu teisendus ühest andmetüübist teise
+
+            //Castimine on viis, kuidas ühest andmetüübist teist saada, Castimist ennast kahte eri liiki - Automaatne ja
+            //manuaalne. Automaatne toimub siis, kui teisendatakse väiksemat andmetüübist suuremasse, aga manuaalselt
+            //on vaja castida siis, kui üritame suuremast andmetüübist väiksemat saada. Manuaalne castimine käib nii, et
+            //sihtmuutuja võrdusmägi taga oleva muutuja nimetuse ette, pannakse sulgudes soovitava andmetüübi nimetus.
+
+            double newData1 = 1.23d; //tekitame, või on kuskil olemas, suure andmed muutujas "newData1" kus on tehu double
+                                     //andmetüübiga
+            float data1float = (float)newData1; //"(float)" teisendab tüüpi andmed float tüüpi andmeteks.
+            long data1Long = (long)newData1; //"(long)" teisendab double tüüpi andmed float tüüpi andmeteks.
+            int data1Int = (int)newData1; //"(int)" teisendab double tüüpi andmed täisarvu andmeteks tüüpi andmeteks.
+            char data1Char = (char)newData1; //"(char)" teisendab double tüüpi andmed char tüüpi andmeet
+       
+                
+                                  
+
+            //2. Loend:
+            // List<T> -> Loend on komposiitandmetüüp, mille sees saab olla mitmeid samat tüüpi liht ja komposiitandmeid. Loend-tüüpi andmeid tähistatakse
+            //            täiendava andmetüübikirjeldusega "List" mille järel noolsulgudesse <> asetatakse mis tüüpi andmed seal loendis on.
+            //            Loendi tekitamisel, erinevalt massivist, ei pea ütlema kui pikk loend on. Loendisse saab dünaamiliselt elementi juurde lisada,
+            //            ehk tema pikkus ei ole fikseeritud. Sarnaselt massiiviga saab temas hoida ka teisi londeid.
+            // Esimine tekitusviis:
+            int arvuNimekiri;
+            List<int> arvu = arvuNimekiri = new List<int>(3); //Andmetüübi kirijeldus "List<>" näitab et tegu on loendiga. List noolsulgude <> vahel on loednis
+                                                             //olevate andmete andmetüüp. Antud juhul on andmetüübiks "int" mis tähistab täisarve. Muutuja enda
+                                                             //nimiks on "arvuNimekiri". Omistame sellesse muutujasse kaitstud sõna "new" abil uue tühja
+                                                             //täisarvuloendi sätestusega "List<int>()".
+            // Teine tekitusviis:
+            List<int> arvuNimekiri2 = new List<int>() {1,2,3 }; //Teine loendi tekitusviis. Andmetuubi kirjeldus "List<>" naitab et tegu on loendiga, Listi
+                                                                //noolsulgude vahel on loendis olevate elementide andmetuup. Antud juhul on andmetuubiks "int"
+                                                                //mis tahistab taisarve. Muutuja enda nimeks on "arvuNimekiri2". Omistame selle muutujasse
+                                                                //kaitstud sona "new" abil uue taisarvuloendi, aga seekord, peale satestust "List<int>()" saame
+                                                                //instantsieerimise hetkel talle kaasa anda ka esimesi elemente. Antud juhul on need elemendid
+                                                                //"1", "2" ja "3". Elemendid sisestatakse nimekirja loogeliste sulgude vahel. Enam ei ole tegu
+                                                               //tuhja nimekirjaga, vaid loendiga kus on kolm elementi juba sees.
+            //kolmas tekitusviis:
+            List<int> arvuNimekiri3 = new List<int>(3);      // kolmas tekitusviis:
+                                                             //Kolmas loendi tekitusviis. Andmetuubi kirjeldus "List<>" naitab et tegu on loendiga, Listi noolsulgude
+                                                             //vahel on loendis olevate elementide andmetuup. Antud juhul on andmetuubiks "int" mis tahistab taisarve.
+                                                             //Muutuja enda nimeks on "arvuNimekiri3". Omistame sellesse muutujasse kaitstud sona "new" abil uue
+                                                             //taisarvuloendi, aga tavaliste sulgude vahele paneme arvu "3". Sarnaselt massiiviga utleb see, et
+                                                             //loend on 3 elemei urung. Loend ise ja tema elemendid on tuhjad, aga seal on 3 elementi. Arv "3"
+                                                             //on parameeter mida Listi konstruktor pikkuse maaramiseks kasutab. Nimekiri sailitab oma omaduse muuta
+                                                             //pikkust elementide lisamise-eemaldamisega, aga vajadusel saab nii anda talle pikkuse.
+            int aa = 9001;
+            // -- Loendi sisemised meetodid:
+            arvuNimekiri.Add(99); //Loendi meetod "Add()" lissab enne punkti olevale järgmile uue elemendi, mida lisatakse Add meetodi sulgude
+                                  //Vahel. Elementi sasab lisab lisada otse (antud juhul täisarv "99")
+            arvuNimekiri.Add(aa); //või muutujana.
+            int loendiPikkus = arvuNimekiri3.Count(); // Loendi meetod "Count()" loeb kokku mitu elementi järjendis on, meetod tagastab täisarvu mis vastab
+                                                      //elementide kogusele
+            bool KasSeeArvOn = arvuNimekiri3.Contains(3); //Loendi meetod "Contains()" otsib kogu järjendis on, meetod tagastab täisarvu mis vastab
+                                                           //parameetrile. Meetod tagastab kas "true" või "false" - on leitud või ei ole.Tegemist on
+                                                           //põhimõtteliselt foreach tsükliga, mis otsib kindlat vastet, töötades läbi kogu loendi.
+            arvuNimekiri3.Remove(4); //Loendi meetod "Remove()" eemaldab enne punkti olevast loendist, kindlal asukohal oleva elemendi. Sulgude vahel on parameetriks
+                                     //ee,aldava elemendi asukohajärjekorranumber.
+
             int liitmine = 1 + 1; //liitmine, kaks arvu liidetakse kokku
             int lahutamine = 1 - 1; //lahutamine, kus esimesest arvust lahutatakse maha teine
             double korrutamine = 1 * 2; //korrutamine, kus teine arv korrutatakse esimese arvu kordi.
@@ -315,10 +391,10 @@ namespace minu_konspekt_E
                 //tule,use, kus korrutame muutujas "arv2" oleva väärtus muutujas "arv1" oleva väärtuse
                 //kordi. Lause lõppeb lauselõpumärgiga ";".
                 else
-                   //teeme sekundaarse tingimuslause "else if", ning määrame tema tingimuse ära sulgudega.
-                   //Sulgude vahel on võrdsuskontroll, kontrollime kas muutuja "tehtetyyp" omab andmeid
-                   //samal kujul nagu võrdusmärkidest teisel pool olev tekst "^" kui eelnev tingimus ei
-                   //täitunud. Lause siin ei lõppe, vaid tingimusele järgneb koodiplokk.
+                //teeme sekundaarse tingimuslause "else if", ning määrame tema tingimuse ära sulgudega.
+                //Sulgude vahel on võrdsuskontroll, kontrollime kas muutuja "tehtetyyp" omab andmeid
+                //samal kujul nagu võrdusmärkidest teisel pool olev tekst "^" kui eelnev tingimus ei
+                //täitunud. Lause siin ei lõppe, vaid tingimusele järgneb koodiplokk.
                 {
                     Console.WriteLine("Viga: nulliga jagamine ei ole võimalik!");
                     return; // lõpetame programmi
@@ -365,7 +441,7 @@ namespace minu_konspekt_E
             {
                 Console.WriteLine("5% allahindlust.");
             }
-            else if  (ostusumma <21 && ostusumma > 0)
+            else if (ostusumma < 21 && ostusumma > 0)
             {
                 Console.WriteLine("allahindlust ei saa");
             }
@@ -378,10 +454,10 @@ namespace minu_konspekt_E
             if (true) { } //kaitstud sõna "if" kutsub esile tingimuslause, mille tingimus on sulgude vahel, ning millele järgneb
                           //koodiplokk tingimuse täitumisel teostatav koodiga
             else if (true) { } // laitstud sõnad "if" (else if) kutsuvad esile sekundaarse tingimuslause, mille tingimus
-                          //on samamoodi sulgude vahel, ning millele pepab eelnema alat kas "if" või teine "else if". tingimuse täitumisel
-                          //ja eelneva tingimuse mittetäitumisel, teostatakse koodiploki sees olev kood.
-            else {}       //kaitsud sõna "else" kutsub esile järeltingimuse, mille peab eelnema kas "if" võ "else if", ning mille koodiploki sisu
-                          //täidetakse kõikide teiste "if" ja "else if" tingimuste läbikukkumisel.
+                               //on samamoodi sulgude vahel, ning millele pepab eelnema alat kas "if" või teine "else if". tingimuse täitumisel
+                               //ja eelneva tingimuse mittetäitumisel, teostatakse koodiploki sees olev kood.
+            else { }       //kaitsud sõna "else" kutsub esile järeltingimuse, mille peab eelnema kas "if" võ "else if", ning mille koodiploki sisu
+                           //täidetakse kõikide teiste "if" ja "else if" tingimuste läbikukkumisel.
 
             /* loogilised tehted */
 
@@ -452,7 +528,85 @@ namespace minu_konspekt_E
                                             // lauselõpumärk. Tsükli tööd kontrolliv tingimuslause koosneb kolmest reast, mitte ühest
                                             // nagu "while" või "do-while" puhul.
 
+                //4. forech
+                int[] arvuLoend = { 3, 67, 420, 69, 42 }; //massiiv mida foreach kasutab või tööleb mingil kujul
+            foreach (var arvInLoend in arvuLoend) //kaistud sõna doreach alustab tsükli. Pärast mida on sulud, mille vahel tekitatakse
+                                                  //ajutine muutuja andmetüübiga "var" töödeldava andmekogumi üksikelemendi jaoks. süntaksis olev
+                                                  //kaitstud sõna "in" väljendab et tsükkel käib selle loendi elementide kohta, ning var "arvInLoend"
+                                                  //muutuja hoiab endas just peale sõna "in" oleva andmekogumi elementi. Tsüklil ei ole nätasvat
+                                                  //tsüklimuutujat ega tingimust, tsükkel toimub niikaua kuni elemmente jätkub, ehk tsükli töö käib
+                                                  //iga üksiku elemendi kohta andmekogumis individuaalselt. Tsüklil ei ole vaja tsüklimuutujat , kuna talle on
+                                                  // sisse ehitatud vaikimisi elemendi järestuse järgimine.Niipalju kui andmeid loendis on, ongi see
+                                                  //mis ütleb ära, mitu korda tsükkel käivitatakse
+
+
+
+                
+
+
+
+
+
+
+
 
         }
     }
-}
+    /* Meethod */
+
+    // Meetodid on väljakutsutavad koodijupid. Meetodid teostavad tavaliselt mingeid spetsiifilisi funktsioone             
+    // Meetodid lasevad programmeerijal taaskasutada oma eelnevalt kirjutatud koodi - write once use many times.
+    // Meetodeid on kahte liiki - Ühed, mis tagastavad mingisuguse töö või tegevuse tagajärjel või tulemusena
+    // mis ei tagasta midagi, kuid omavad siiski mingit tegevust.
+
+    // Metodi singnatuur & selle kompositsioon:
+    // Metodi sinatuur on kõige esimine rida, mis meetodi tekitamiseks kirjutatakse, ning mis kirjeldab meetodit ennast, ning selle
+    // omadusi.
+    // Meetodi signatuur koosneb kindlast äramääratud omadusest. nendeks on juurdepääsu modifikaator, tagastustüüp,
+    // meetodi enda nimi, olenevalt meetodi liigist ka parameetrid mis on sulgude vahel (), ning koodiplokist mis on meetodi sisu.
+    // - Juurdepääsu modifikaator ütleb ära, kust ja kuidas seda meetodit välja kutsuda või adresseerida saab. Juurdepääsu modi-
+    // fikaatoreid on tähtsamatest 4-5 tükki.
+    // 1 - üublic --- meetod on avalik ja kättesaadav ka teistes klassi, kus meetod ise asub.
+    // 2 - private --- meetod on saadav ainult selles klassis kus meetod ise asub.
+    // 3 - protected --- meetod on saadav ainult selles klassis kus meetod ise asub ja klassis mis pärilusega saab
+    //     selle klassi andmed kaasa.
+    // 4 - internal -- meetod on saadav ainult selles klassis ja ainult selles gailis.
+    // 5 - static --- vahest võib olla pandud ka static, see ütleb lihtsalt et see meetod asub siin.
+    //
+    // - Tagastustüüp on meetodi omadus, mis ütleb ära mis tüüp andmed, meetodi väljakutsumise asukohta tagastatakse, kui üldse.
+    // Andmetüüp, mida tagastada, võib olla ükskõik milline liht- või kombinatsioonandmetüüp. Aga kui ei tagasta üldse andmeid
+    // pannakse selle asemel andmetüübiks "void". kui meetodil on tagastustüüp mis on midagi muud kui void, on meetodi sees, iga toimiva
+    // koodisuuna lõpus kaitstud sõna "return", return ütleb, et just see asi on vaja tagastada.peale returni on alati mingisugune kindel
+    // muutuja, või tegevuse tulemus, mis tagastatakse meetodi väljakutseasukohta. peale käivitatud returni, ei teostata mitte ühtegi
+    // muud meetodis olevat koodi, sest meetod on leidnud oma tagastatava objekti, ning meetodi töö sellel hetkel katkestatakse.
+    // Return on osaliselt ka kui break.
+    //
+    // - Meethod enda nimi on midagi mille järgi arendaja meetodit kasutab koodis välja, ning meetodi nimi peaks kuvama
+    // üldsõnaliselt mida see meetod teeb. Näites meetod nimega "A();" ei ole hea, sest sõna "A" ei ütle programmerijale mitte midagi.
+    // Aga näiteks meetod, nimega "arvutiKokku();" Ütleb arendajale ära, mida see meetod teeb. Ta ei raiska oma aega, selle
+    //* meetodi enda koodi lugemisele.
+    //
+    // - Parameetrid on need, mis ütlevad, mis meetodil tema tääks vaja on. Parameeter, meetodi signatuuris võib olla teistmoodi
+    // väljendatud, kui on kirjutatud muutuja mis on koodi sees, mille jaoks seda kasutada vaja on.
+    // 1. tüüp meetod - ei tagasta midagi:
+    public static void UusMeetod() //meetodi signatuur, mis omab juurdepääsumodifikaatorit "public", "static" ütleb et ta kuulub sellesse
+    {                               //klassi. tagastustüüp on "void" mis ütleb etandmeid meie meetod ei tagasta. pärast omadusi on selle
+                                        //meetodi nimi "UusMeetod" peal mida on sulud, kus parameetreid ei ole.
+                                        //pärast signatuuri on koodiplokk selle meetodi koodiga, loogeliste sulgude vahel {}
+
+            
+      Console.WriteLine("Tere");   //antud juhul on meetodi sisuks sõnumi kuvamine, mooduli "Console" abiga, mille seest punkti abil "."
+                                   //adresseerime Console meetodit "WriteLine" ning mille parameetriks on sõne "Tere", parameeter asub
+                                   //see arendaja nimi olevate sulgude vahel. Lause lõppeb lauselõpumärgiga ";"
+                                   //see arendaja poold kirjutatud meetodi koodi ei oma.
+    }
+
+        // 2. tüüpi meetod - tagastab väärtuse:
+        int[] arvutatavadAravud = new int[] { 67, 69, 420, 9001 }; //Töödeldavad andmed, mis asuvad täisarvumassiives, muutujanimega
+                                                                   //"arvutatavadArvud".
+
+        public static int Arvutakokku(int[] arvutatavad) //Meetod mille ssignatuuris on juurdepääsumodifikaator "public", "static" ütleb et ta kuulub
+                                                         //sellesse klassi, tagastustüüp "int" ütleb, et programmis tagastatakse täisarv asukohta
+                                                         //koodis kus meetod algelt välja kutsuti. siis on meetodi nimi "ArvutaKokku", ning sulgude
+                                                         //vahel ootab meetod täist
+    }
